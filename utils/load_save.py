@@ -15,7 +15,7 @@ def load_phraser(filename):
 
 
 def create_phraser(file):
-    clean_sents = bigrams.gbergSentBigram(file)
+    clean_sents = bigrams.gberg_sent_bigram(file)
     return Phraser(Phrases(clean_sents))
 
 
@@ -29,3 +29,4 @@ def load_or_create_phraser(file):
         phraser = create_phraser(file)
         save_phraser(phraser, phraser_filename)
         print("Phraser saved to file.")
+    return phraser
