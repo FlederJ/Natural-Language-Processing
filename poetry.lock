@@ -198,6 +198,40 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "dill"
+version = "0.3.6"
+description = "serialize all of python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+graph = ["objgraph (>=1.7.2)"]
+
+[[package]]
+name = "exceptiongroup"
+version = "1.1.1"
+description = "Backport of PEP 654 (exception groups)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+test = ["pytest (>=6)"]
+
+[[package]]
+name = "filelock"
+version = "3.12.2"
+description = "A platform independent file lock."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo (>=2023.5.20)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)", "sphinx (>=7.0.1)"]
+testing = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "diff-cover (>=7.5)", "pytest-cov (>=4.1)", "pytest-mock (>=3.10)", "pytest-timeout (>=2.1)", "pytest (>=7.3.1)"]
+
+[[package]]
 name = "flask"
 version = "2.2.2"
 description = "A simple framework for building complex web applications."
@@ -249,6 +283,14 @@ description = "Internationalized Domain Names in Applications (IDNA)"
 category = "main"
 optional = false
 python-versions = ">=3.5"
+
+[[package]]
+name = "iniconfig"
+version = "2.0.0"
+description = "brain-dead simple config-ini parsing"
+category = "main"
+optional = false
+python-versions = ">=3.7"
 
 [[package]]
 name = "iso8601"
@@ -319,6 +361,34 @@ description = "multidict implementation"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "nlp"
+version = "0.4.0"
+description = "HuggingFace/NLP is an open library of NLP datasets."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+dill = "*"
+filelock = "*"
+numpy = "*"
+pandas = "*"
+pyarrow = ">=0.16.0"
+requests = ">=2.19.0"
+tqdm = ">=4.27"
+xxhash = "*"
+
+[package.extras]
+apache-beam = ["apache-beam"]
+dev = ["apache-beam", "absl-py", "bs4", "elasticsearch", "faiss-cpu", "langdetect", "mwparserfromhell", "nltk", "pytest", "pytest-xdist", "tensorflow", "torch", "tldextract", "zstandard", "black", "isort", "flake8 (==3.7.9)"]
+docs = ["recommonmark", "sphinx", "sphinx-markdown-tables", "sphinx-rtd-theme (==0.4.3)", "sphinx-copybutton"]
+quality = ["black", "isort", "flake8 (==3.7.9)"]
+tensorflow = ["tensorflow (>=2.2.0)"]
+tensorflow_gpu = ["tensorflow-gpu (>=2.2.0)"]
+tests = ["apache-beam", "absl-py", "bs4", "elasticsearch", "faiss-cpu", "langdetect", "mwparserfromhell", "nltk", "pytest", "pytest-xdist", "tensorflow", "torch", "tldextract", "zstandard"]
+torch = ["torch"]
 
 [[package]]
 name = "nltk"
@@ -452,7 +522,7 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.2.2)", "pytest-cov (>=4)", "pytes
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -467,6 +537,17 @@ description = ""
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "pyarrow"
+version = "12.0.1"
+description = "Python library for Apache Arrow"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+numpy = ">=1.16.6"
 
 [[package]]
 name = "pycparser"
@@ -508,6 +589,25 @@ pycryptodomex = ">=3.12.0,<4.0.0"
 
 [package.extras]
 docs = ["Sphinx[docs] (>=4.3.2,<6.0.0)", "sphinx-autodoc-typehints[docs] (==1.12.0)", "sphinx-rtd-theme[docs] (>=1.0.0,<2.0.0)"]
+
+[[package]]
+name = "pytest"
+version = "7.4.0"
+description = "pytest: simple powerful testing with Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = {version = "*", markers = "sys_platform == \"win32\""}
+exceptiongroup = {version = ">=1.0.0rc8", markers = "python_version < \"3.11\""}
+iniconfig = "*"
+packaging = "*"
+pluggy = ">=0.12,<2.0"
+tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
+
+[package.extras]
+testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
 name = "python-dateutil"
@@ -742,7 +842,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -831,6 +931,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "xxhash"
+version = "3.2.0"
+description = "Python binding for xxHash"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "xyzservices"
 version = "2023.5.0"
 description = "Source of XYZ tiles providers"
@@ -861,7 +969,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "833a010ce9330737237c9509840f1c485406b6f153d3760cb119d76553e83f9d"
+content-hash = "82115d32dabc992fcc68a44f6c9b4c831340c2d8e2e3b2f9481ffe25376ab0d2"
 
 [metadata.files]
 aiohttp = []
@@ -879,10 +987,14 @@ colorama = []
 contourpy = []
 cryptography = []
 debugpy = []
+dill = []
+exceptiongroup = []
+filelock = []
 flask = []
 frozenlist = []
 gensim = []
 idna = []
+iniconfig = []
 iso8601 = []
 itsdangerous = []
 jedi = []
@@ -890,6 +1002,7 @@ jinja2 = []
 joblib = []
 markupsafe = []
 multidict = []
+nlp = []
 nltk = []
 numpy = []
 packaging = []
@@ -900,10 +1013,12 @@ pillow = []
 platformdirs = []
 pluggy = []
 protobuf = []
+pyarrow = []
 pycparser = []
 pycryptodomex = []
 pyflakes = []
 pyseto = []
+pytest = []
 python-dateutil = []
 python-lsp-jsonrpc = []
 pytoolconfig = []
@@ -929,6 +1044,7 @@ ujson = []
 urllib3 = []
 werkzeug = []
 whatthepatch = []
+xxhash = []
 xyzservices = []
 yapf = []
 yarl = []
