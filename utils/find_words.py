@@ -52,7 +52,7 @@ def predict_next_word(word, phraser):
         return "[END]"
 
 
-def input_autocomplete():
+def input_autocomplete(phraser):
     new_word = input(
         "Type a word or a sentence and the model will continue it: ")
     new_word = new_word.split(" ")[-1].lower()

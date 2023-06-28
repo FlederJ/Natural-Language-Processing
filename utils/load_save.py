@@ -14,14 +14,18 @@ def load_phraser(filename):
     return phraser
 
 
+def create_phraser(file):
+    clean_sents = bigrams.gbergSentBigram(file)
+    return Phraser(Phrases(clean_sents))
+
+
 def load_or_create_phraser(file):
-    phraser_filename = 'files/phraser.pkl'
+    phraser_filename = 'test/files/phraser.pkl'
     try:
         phraser = load_phraser(phraser_filename)
         print("Phraser loaded from file.")
     except FileNotFoundError:
         print("Phraser not found. Creating a new one.")
-        clean_sents = bigrams.gbergSentBigram(file)
-        phraser = Phraser(Phrases(clean_sents))
+        phraser = create_phraser(file)
         save_phraser(phraser, phraser_filename)
         print("Phraser saved to file.")
