@@ -1,4 +1,4 @@
-from nlp.utils import bigrams
+from utils import bigrams
 import pickle
 from gensim.models.phrases import Phraser, Phrases
 
